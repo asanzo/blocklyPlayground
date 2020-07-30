@@ -1,0 +1,22 @@
+{
+  "name": "blocklyplayground",
+  "version": "1.0.0",
+  "description": "Just playing with blockly",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/asanzo/blocklyPlayground.git"
+  },
+  "author": "Alfredo Sanzo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/asanzo/blocklyPlayground/issues"
+  },
+  "homepage": "https://github.com/asanzo/blocklyPlayground#readme",
+  "dependencies": {
+    "blockly": "^3.20200625.2"
+  }
+}

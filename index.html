@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Playing with blockly</title>
+    <script src="node_modules/blockly/blockly_compressed.js"></script>
+    <script src="node_modules/blockly/blocks_compressed.js"></script>
+    <script src="node_modules/blockly/msg/en.js"></script>
+
+
+  </head>
+
+  <body>
+    <h1>Playing with blockly</h1>
+    <div id="blocklyDiv" style="position: absolute"></div>
+    <div id="blocklyArea" style="height: 600px; width: 100%;"></div>
+
+    <xml id="toolbox" style="display: none">
+      <block type="IDontWorkInMobile"></block>
+    </xml>
+
+    <script>
+      // HERE BE THE FieldImaged block
+      Blockly.Blocks['IDontWorkInMobile'] = {
+        init: function() {
+          this.appendDummyInput()
+              .appendField("Click the star to alert hello")
+              .appendField(new Blockly.FieldImage(
+                "https://www.gstatic.com/codesite/ph/images/star_on.gif", 
+                15, 
+                15, 
+                "I'm a star, click me", 
+                function(){alert("HELLO")} 
+              ));
+          this.setInputsInline(true);
+          this.setColour(230);
+          this.setTooltip("");
+          this.setHelpUrl("");
+        }
+      };
+
+
+
+      var blocklyArea = document.getElementById('blocklyArea');
+      var blocklyDiv = document.getElementById('blocklyDiv');
+      var workspace = Blockly.inject(blocklyDiv,
+          {toolbox: document.getElementById('toolbox')});
+      var onresize = function(e) {
+        // Compute the absolute coordinates and dimensions of blocklyArea.
+        var element = blocklyArea;
+        var x = 0;
+        var y = 0;
+        do {
+          x += element.offsetLeft;
+          y += element.offsetTop;
+          element = element.offsetParent;
+        } while (element);
+        // Position blocklyDiv over blocklyArea.
+        blocklyDiv.style.left = x + 'px';
+        blocklyDiv.style.top = y + 'px';
+        blocklyDiv.style.width = blocklyArea.offsetWidth + 'px';
+        blocklyDiv.style.height = blocklyArea.offsetHeight + 'px';
+        Blockly.svgResize(workspace);
+      };
+      window.addEventListener('resize', onresize, false);
+      onresize();
+      Blockly.svgResize(workspace);
+    </script>
+  </body>
+</html> 
