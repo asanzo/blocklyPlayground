@@ -4,7 +4,7 @@
   "description": "Just playing with blockly",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "prepublish": "cp node_modules/blockly/blockly_compressed.js js/blockly_compressed.js; cp node_modules/blockly/blocks_compressed.js js/blocks_compressed.js; cp node_modules/blockly/msg/en.js js/en.js"
   },
   "repository": {
     "type": "git",
